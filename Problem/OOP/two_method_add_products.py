@@ -1,6 +1,6 @@
 # Inside the Shop class, create a method name add_product which adds products using the Product class to the Shop class.
 
-# create a product class and a shop class
+
 class Product:
     def __init__(self, name, price):
         self.name = name
