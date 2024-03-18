@@ -17,6 +17,7 @@ class Rider(User):
         self.current_location = current_location
         self.current_ride = current_ride
         self.wallet = 0
+        super().__init__(name, mail, id, nid)
 
     def load_cash(self, amount):
         if amount > 0:
