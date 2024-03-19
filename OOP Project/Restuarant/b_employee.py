@@ -43,6 +43,9 @@ class Employee(User):
         self.salary = salary
         self.dept = dept
 
+    def receive_salary(self):
+        self.due = 0
+
 class Chef(Employee):
     def __init__(self, name, phone, email, address, salary, dept, cooking_item):
         super().__init__(name, phone, email, address, salary, dept)
