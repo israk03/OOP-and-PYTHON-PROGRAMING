@@ -36,7 +36,7 @@ class Customer(User):
         pass
 
 
-# b -> different types of employee (server, chef)
+# b -> different types of employee (server, chef, manager)
 class Employee(User):
     def __init__(self, name, phone, email, address, salary, dept):
         super().__init__(name, phone, email, address)
@@ -64,3 +64,7 @@ class Server(Employee):
 
     def receive_tips(self, amount):
         self.tips_earning += amount
+
+class Manager(Employee):
+    def __init__(self, name, phone, email, address, salary, dept):
+        super().__init__(name, phone, email, address, salary, dept)
