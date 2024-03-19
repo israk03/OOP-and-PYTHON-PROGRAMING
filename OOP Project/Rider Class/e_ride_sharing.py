@@ -16,7 +16,8 @@ class Ride_Sharing():
     def add_driver(self, driver):
         self.drivers.append(driver)
 
-
+    def __repr__(self):
+        return f"{self.company_name} with riders: {len(self.rides)} and drivers: {len(self.drivers)}."
 class User(ABC):
     def __init__(self, name, mail, id, nid):
         self.name = name
@@ -30,7 +31,7 @@ class User(ABC):
 class Rider(User):
     def __init__(self, name, mail, id, nid, current_location, current_ride, initial_amount):
         self.current_location = current_location
-        self.current_ride = current_ride
+        self.current_ride = None
         self.wallet = initial_amount
         super().__init__(name, mail, id, nid)
 
@@ -41,15 +42,18 @@ class Rider(User):
     def update_location(self, current_location):
         self.current_location = current_location
 
+    def show_current_location(self):
+        print(self.current_ride)
+
     def display_profile(self):
         print(f"Rider name: {self.name} with email {self.mail}.")
 
-    def request_ride(self, destination):
+    def request_ride(self, ride_sharing, destination):
         if not self.current_ride:
             # TODO : set ride properly
             # TODO : set current ride via ride match
             ride_request = Ride_Request(self, destination)
-            ride_matcher = Ride_Matching()
+            ride_matcher = Ride_Matching(ride_sharing.drivers)
 
             self.current_ride = ride_matcher.find_driver(ride_request)
 
@@ -127,3 +131,18 @@ class Car(Vehicle):
 
     def start_drive(self):
         self.status = 'unavailable'
+
+
+# d -> check the class integration
+niye_jao = Ride_Sharing("Niye Jao")
+
+sakib = Rider("Shakib", 'sah@75.com', 1234, 12345678, 'Gulshan', 1200)
+niye_jao.add_rider(sakib)
+
+tamim = Driver("Tamim", 'tamim@28.com', 987654443, 'Gulistan')
+niye_jao.add_driver(tamim)
+
+print(niye_jao)
+
+sakib.request_ride(niye_jao, 'Mirpur')
+sakib.show_current_ride()
