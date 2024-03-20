@@ -47,7 +47,7 @@ class Employee(User):
         self.due = 0
 
 class Chef(Employee):
-    def __init__(self, name, phone, email, address, salary, dept, cooking_item):
+    def __init__(self, name, phone, email, address, salary, dept):
         super().__init__(name, phone, email, address, salary, dept)
         self.cooking_item = cooking_item
 

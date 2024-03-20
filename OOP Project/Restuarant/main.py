@@ -1,4 +1,6 @@
 from d_menu import Pizza, Burger, Drinks, Menu
+from c_restuarant import Restuarant
+from b_employee import Chef, Customer, Server, Manager
 
 def main():
     menu = Menu()
@@ -19,3 +21,17 @@ def main():
     menu.add_menu_item('drinks', mocha)
 
     menu.show_menu()
+
+
+    restuarant = Restuarant('Sai Baba Restuarant')
+
+    manager = Manager('Kala Chan', 8888, 'kala@chan.com', 'kalipur', 1500, 'core')
+    restuarant.add_employee('manager', manager)
+
+    chef = Chef('Rustom', 9999, 'rustom@kopa.com', 'Rustom Nagar', 2500, 'chef')
+    restuarant.add_employee('chef', chef)
+
+    server = Server('Chotu', 7777, 'nai@jai.com', 'Restuarant', 1000, 'server')
+    restuarant.add_employee('server', server)
+
+    restuarant.show_employees()
