@@ -13,7 +13,7 @@ class Burger(Food):
 
 class Pizza(Food):
     def __init__(self, name, price, size, toppings):
-        super().__init__(name, price, size)
+        super().__init__(name, price)
         self.size = size
         self.toppings = toppings
 
