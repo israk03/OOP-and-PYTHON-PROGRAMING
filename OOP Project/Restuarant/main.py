@@ -1,6 +1,7 @@
 from d_menu import Pizza, Burger, Drinks, Menu
 from c_restuarant import Restuarant
 from b_employee import Chef, Customer, Server, Manager
+from e_order import Order
 
 def main():
     menu = Menu()
@@ -35,3 +36,12 @@ def main():
     restuarant.add_employee('server', server)
 
     restuarant.show_employees()
+
+    customer_1 = Customer('Shakib', 1111, 'sakib@khan.com', 'banani', 100000)
+    order_1 = Order(customer_1, [pizza_1, mocha])
+    customer_1.pay_for_order(order_1)
+    restuarant.add_order(order_1)
+
+    restuarant.receive_payment(order_1, 2000, customer_1)
+
+    print(f"Revenue: {restuarant.revenue}, Balance: {restuarant.balance}.")
