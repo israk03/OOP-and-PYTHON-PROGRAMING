@@ -1,6 +1,6 @@
 # c -> create the restuarant class
 class Restuarant:
-    def __init__(self, name):
+    def __init__(self, name, rent, menu = []):
         self.name = name
         self.chef = None
         self.server = None
@@ -8,8 +8,9 @@ class Restuarant:
 
         self.orders = []
 
-        self.menu = []
+        self.menu = menu
 
+        self.rent = rent
         self.revenue = 0
         self.expense = 0
         self.balance = 0
@@ -46,7 +47,10 @@ class Restuarant:
             print(f"Not enough money to pay {amount}.")
 
     def pay_salary(self, employee):
+        print(f"Paying salary for {employee.name} salary: {employee.salary}")
         if employee.salary < self.balance:
+            self.balance -= employee.salary
+            self.expense += employee.salary
             employee.receive_salary()
 
     def show_employees(self):
